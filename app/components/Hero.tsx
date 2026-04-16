@@ -2,24 +2,25 @@
 
 import { motion } from 'framer-motion';
 import { ArrowDown, MapPin, Github, Linkedin, Mail } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-28">
       {/* Background layers */}
       <div className="absolute inset-0 grid-bg pointer-events-none" />
       <div className="absolute inset-0 noise pointer-events-none" />
 
-      {/* Ambient glow orbs */}
+      {/* Ambient glow orbs — hidden on mobile to avoid continuous GPU compositing */}
       <motion.div
         animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
         transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-1/4 -left-20 w-[420px] h-[420px] rounded-full bg-apple-blue/20 blur-[120px]"
+        className="hidden md:block absolute top-1/4 -left-20 w-[420px] h-[420px] rounded-full bg-apple-blue/20 blur-[120px]"
       />
       <motion.div
         animate={{ x: [0, -40, 0], y: [0, 30, 0] }}
         transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] rounded-full bg-indigo-500/15 blur-[140px]"
+        className="hidden md:block absolute bottom-1/4 -right-20 w-[500px] h-[500px] rounded-full bg-indigo-500/15 blur-[140px]"
       />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-8 w-full">
@@ -47,8 +48,7 @@ export default function Hero() {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
               className="font-display text-[44px] sm:text-[64px] md:text-[80px] lg:text-[96px] leading-[0.95] tracking-tightest font-semibold"
             >
-              <span className="gradient-text block">Feng Yan.</span>
-              <span className="gradient-text-blue block">Frank.</span>
+              <span className="gradient-text block pb-3">Feng Yan.</span>
             </motion.h1>
 
             {/* Subheadline */}
@@ -75,7 +75,7 @@ export default function Hero() {
               <span className="hidden sm:inline w-1 h-1 rounded-full bg-apple-muted/40" />
               <span>MSc Computer Science · UOW</span>
               <span className="hidden sm:inline w-1 h-1 rounded-full bg-apple-muted/40" />
-              <span>Open to 🇦🇺 &nbsp;&amp;&nbsp; 🇨🇦 🇺🇸</span>
+              <span>Open to 🇦🇺 Australia</span>
             </motion.div>
 
             {/* CTA buttons */}
@@ -107,7 +107,7 @@ export default function Hero() {
                 <Github size={14} strokeWidth={1.8} /> GitHub
               </a>
               <a
-                href="https://linkedin.com/in/your-handle"
+                href="https://www.linkedin.com/in/yan-feng-b18929190/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 glass-light hover:bg-white/[0.08] text-apple-text text-[14px] font-medium rounded-full btn-lift inline-flex items-center gap-2"
@@ -128,55 +128,36 @@ export default function Hero() {
             <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-apple-blue/40 via-indigo-500/20 to-transparent blur-2xl" />
 
             <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden glass-light p-1 animate-float">
-              <div className="w-full h-full rounded-full bg-gradient-to-br from-apple-elevated to-apple-surface flex items-center justify-center relative overflow-hidden">
-                {/* Placeholder avatar */}
-                <svg
-                  viewBox="0 0 200 200"
-                  className="w-full h-full"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <defs>
-                    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#1c1c1e" />
-                      <stop offset="100%" stopColor="#0a0a0a" />
-                    </linearGradient>
-                    <linearGradient id="figure" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#2997ff" />
-                      <stop offset="100%" stopColor="#0071e3" />
-                    </linearGradient>
-                  </defs>
-                  <rect width="200" height="200" fill="url(#bg)" />
-                  <circle cx="100" cy="78" r="32" fill="url(#figure)" opacity="0.85" />
-                  <path
-                    d="M 40 180 Q 40 130 100 130 Q 160 130 160 180 Z"
-                    fill="url(#figure)"
-                    opacity="0.85"
-                  />
-                </svg>
-                <div className="absolute bottom-3 left-0 right-0 text-center text-[10px] text-apple-muted/70 tracking-widest uppercase">
-                  Photo placeholder
-                </div>
+              <div className="w-full h-full rounded-full relative overflow-hidden">
+                <Image
+                  src="/avatar.jpg"
+                  alt="Feng Yan"
+                  fill
+                  className="object-cover object-top"
+                  priority
+                />
               </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.4 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-apple-muted"
-        >
-          <span className="text-[10px] tracking-[0.2em] uppercase">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <ArrowDown size={14} strokeWidth={1.5} />
-          </motion.div>
-        </motion.div>
       </div>
+
+      {/* Scroll indicator — direct child of section, anchored to viewport bottom */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.4 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-apple-muted z-10"
+      >
+        <span className="text-[10px] tracking-[0.2em] uppercase">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <ArrowDown size={14} strokeWidth={1.5} />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

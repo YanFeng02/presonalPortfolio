@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2 text-[13px] text-apple-muted">
             <span className="text-apple-blue">✦</span>
-            <span>Frank Yan · Designed &amp; built from scratch.</span>
+            <span>Feng Yan · Designed &amp; built from scratch.</span>
           </div>
 
           <div className="flex items-center gap-4 text-[13px] text-apple-muted">
@@ -24,7 +24,7 @@ export default function Footer() {
             </a>
             <span className="w-1 h-1 rounded-full bg-apple-muted/40" />
             <a
-              href="https://linkedin.com/in/your-handle"
+              href="https://www.linkedin.com/in/yan-feng-b18929190/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 hover:text-apple-text transition-colors"

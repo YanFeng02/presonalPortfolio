@@ -14,6 +14,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -74,6 +75,22 @@ body {
   backdrop-filter: blur(40px) saturate(180%);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Mobile: cut heavy blur in half — single biggest GPU win */
+@media (max-width: 768px) {
+  .glass {
+    backdrop-filter: saturate(150%) blur(10px);
+    -webkit-backdrop-filter: saturate(150%) blur(10px);
+  }
+  .glass-light {
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+  }
+  /* Disable decorative floating animation on mobile */
+  .animate-float {
+    animation: none;
+  }
 }
 
 /* Hero grid background */

@@ -1,10 +1,13 @@
+import dynamic from 'next/dynamic';
 import Nav from './components/Nav';
 import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import Experience from './components/Experience';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+
+// Below-fold components: code-split to reduce initial JS bundle
+const About      = dynamic(() => import('./components/About'));
+const Projects   = dynamic(() => import('./components/Projects'));
+const Experience = dynamic(() => import('./components/Experience'));
+const Contact    = dynamic(() => import('./components/Contact'));
+const Footer     = dynamic(() => import('./components/Footer'));
 
 export default function Home() {
   return (

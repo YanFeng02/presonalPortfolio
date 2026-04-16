@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, Linkedin, Menu, X } from 'lucide-react';
+import { Github, Linkedin, Menu, X, Terminal } from 'lucide-react';
 
 const navItems = [
   { label: 'About', href: '#about' },
@@ -37,8 +37,8 @@ export default function Nav() {
           href="#"
           className="flex items-center gap-2 text-apple-text font-semibold tracking-tight text-[15px]"
         >
-          <span className="text-apple-blue text-lg">✦</span>
-          <span>Frank Yan</span>
+          <span className="text-apple-blue flex items-center"><Terminal size={15} strokeWidth={1.8} /></span>
+          <span className="font-mono text-[14px] font-medium tracking-tight">Feng Yan</span>
         </a>
 
         {/* Desktop nav */}
@@ -67,7 +67,7 @@ export default function Nav() {
             <Github size={16} strokeWidth={1.8} />
           </a>
           <a
-            href="https://linkedin.com/in/your-handle"
+            href="https://www.linkedin.com/in/yan-feng-b18929190/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -125,7 +125,7 @@ export default function Nav() {
                   <Github size={16} /> GitHub
                 </a>
                 <a
-                  href="https://linkedin.com/in/your-handle"
+                  href="https://www.linkedin.com/in/yan-feng-b18929190/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-apple-text/80"

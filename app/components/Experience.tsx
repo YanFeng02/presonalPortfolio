@@ -66,7 +66,7 @@ export default function Experience() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: false, margin: '-100px' }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-[11px] tracking-[0.25em] uppercase text-apple-blue mb-6"
         >
@@ -76,7 +76,7 @@ export default function Experience() {
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: false, margin: '-100px' }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="font-display text-[32px] sm:text-[44px] md:text-[56px] lg:text-[64px] leading-[1.05] tracking-tightest font-semibold max-w-4xl"
         >
@@ -94,7 +94,7 @@ export default function Experience() {
                 key={idx}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
+                viewport={{ once: false, margin: '-100px' }}
                 transition={{
                   duration: 0.8,
                   ease: [0.16, 1, 0.3, 1],

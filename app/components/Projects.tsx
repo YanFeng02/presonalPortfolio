@@ -13,31 +13,11 @@ type Project = {
   stack: string[];
   links: { label: string; href: string; icon?: 'link' | 'github' }[];
   accent: string;
-  visual: 'rxtech' | 'jira' | 'capstone';
+  visual: 'rxtech' | 'jira' | 'capstone' | 'pm';
   status?: string;
 };
 
 const projects: Project[] = [
-  {
-    title: 'RxTech',
-    tagline: 'A live Australian e-commerce platform for robotic lawn mowers.',
-    description:
-      'Designed, built, and deployed end-to-end — from tech stack selection and UI/UX to admin back-office and cloud deployment. Real customers, real payments, real ops.',
-    role: 'Sole Developer',
-    period: 'Feb 2026 — Present',
-    status: 'Live',
-    highlights: [
-      'Owned full product lifecycle: research, design, dev, deploy, maintain',
-      'Built responsive storefront with multi-SKU comparison and mobile-first checkout',
-      'Admin back-office so non-technical staff can manage daily ops',
-      'Integrated Stripe (AUD payments, webhooks, refunds) + Clerk auth with RBAC',
-      'Deployed on Vercel + AWS with custom domain, DNS, SSL, CI/CD',
-    ],
-    stack: ['Next.js', 'React', 'TypeScript', 'Stripe', 'Clerk', 'Vercel', 'AWS', 'Tailwind'],
-    links: [{ label: 'rxtech.com.au', href: 'https://rxtech.com.au', icon: 'link' }],
-    accent: 'from-emerald-500/30 via-teal-500/20 to-transparent',
-    visual: 'rxtech',
-  },
   {
     title: 'Marketing Simplified',
     tagline: 'Multi-service advertising operations platform with 18+ Docker services.',
@@ -59,6 +39,26 @@ const projects: Project[] = [
     visual: 'jira',
   },
   {
+    title: 'RxTech',
+    tagline: 'A live Australian e-commerce platform for robotic lawn mowers.',
+    description:
+      'Designed, built, and deployed end-to-end — from tech stack selection and UI/UX to admin back-office and cloud deployment. Real customers, real payments, real ops.',
+    role: 'Sole Developer',
+    period: 'Feb 2026 — Present',
+    status: 'Live',
+    highlights: [
+      'Owned full product lifecycle: research, design, dev, deploy, maintain',
+      'Built responsive storefront with multi-SKU comparison and mobile-first checkout',
+      'Admin back-office so non-technical staff can manage daily ops',
+      'Integrated Stripe (AUD payments, webhooks, refunds) + Clerk auth with RBAC',
+      'Deployed on Vercel + AWS with custom domain, DNS, SSL, CI/CD',
+    ],
+    stack: ['Next.js', 'React', 'TypeScript', 'Stripe', 'Clerk', 'Vercel', 'AWS', 'Tailwind'],
+    links: [{ label: 'rxtech.com.au', href: 'https://rxtech.com.au', icon: 'link' }],
+    accent: 'from-emerald-500/30 via-teal-500/20 to-transparent',
+    visual: 'rxtech',
+  },
+  {
     title: 'LLM Website Builder',
     tagline: 'An AI agent that builds websites through natural conversation.',
     description:
@@ -78,6 +78,25 @@ const projects: Project[] = [
     accent: 'from-purple-500/30 via-pink-500/20 to-transparent',
     visual: 'capstone',
   },
+  {
+    title: 'HelloRide',
+    tagline: 'Senior PM at one of China\'s largest mobility platforms — 500M+ registered users.',
+    description:
+      'Led product for core ride-hailing features at Hello TransTech (HelloRide). Owned roadmap, wrote detailed specs, drove cross-functional execution from concept to launch — at scale.',
+    role: 'Senior Product Manager',
+    period: 'May 2021 — Jul 2024',
+    highlights: [
+      'Owned roadmap for core mobility features across a 500M+ user platform',
+      'Wrote product specs and defined API contracts directly with engineering teams',
+      'Served 2,000+ enterprise clients with feature adoption rates exceeding 80%',
+      'Managed cross-functional teams of engineers, designers, and data analysts',
+      'Transitioned to engineering to build the products I once specified',
+    ],
+    stack: ['Agile', 'Jira', 'Figma', 'SQL', 'A/B Testing', 'Data Analysis', 'Roadmapping'],
+    links: [],
+    accent: 'from-orange-500/30 via-amber-500/20 to-transparent',
+    visual: 'pm',
+  },
 ];
 
 function ProjectVisual({ kind }: { kind: Project['visual'] }) {
@@ -95,14 +114,12 @@ function ProjectVisual({ kind }: { kind: Project['visual'] }) {
           </linearGradient>
         </defs>
         <rect width="400" height="260" fill="url(#rx-bg)" rx="12" />
-        {/* grid */}
         {[...Array(10)].map((_, i) => (
           <line key={`h${i}`} x1="0" y1={i * 26} x2="400" y2={i * 26} stroke="rgba(52,211,153,0.06)" />
         ))}
         {[...Array(16)].map((_, i) => (
           <line key={`v${i}`} x1={i * 26} y1="0" x2={i * 26} y2="260" stroke="rgba(52,211,153,0.06)" />
         ))}
-        {/* mower */}
         <g transform="translate(130, 90)">
           <rect x="0" y="20" width="140" height="60" rx="24" fill="url(#rx-mower)" />
           <rect x="20" y="0" width="100" height="30" rx="14" fill="#064e3b" />
@@ -110,7 +127,6 @@ function ProjectVisual({ kind }: { kind: Project['visual'] }) {
           <circle cx="110" cy="85" r="14" fill="#022c22" />
           <circle cx="70" cy="45" r="6" fill="#d1fae5" opacity="0.8" />
         </g>
-        {/* labels */}
         <text x="20" y="30" fill="#34d399" fontSize="10" fontFamily="monospace" opacity="0.7">rxtech.com.au</text>
         <text x="20" y="240" fill="#a7f3d0" fontSize="11" fontFamily="monospace" opacity="0.5">AUD · Stripe · Live</text>
       </svg>
@@ -126,7 +142,6 @@ function ProjectVisual({ kind }: { kind: Project['visual'] }) {
           </linearGradient>
         </defs>
         <rect width="400" height="260" fill="url(#j-bg)" rx="12" />
-        {/* Kanban columns */}
         {[
           { x: 30, color: '#60a5fa', label: 'TODO', cards: 3 },
           { x: 150, color: '#a78bfa', label: 'DOING', cards: 2 },
@@ -156,26 +171,116 @@ function ProjectVisual({ kind }: { kind: Project['visual'] }) {
       </svg>
     );
   }
+  if (kind === 'capstone') {
+    return (
+      <svg viewBox="0 0 400 260" className="w-full h-full">
+        <defs>
+          <linearGradient id="c-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#1a0b2e" />
+            <stop offset="100%" stopColor="#0a0414" />
+          </linearGradient>
+        </defs>
+        <rect width="400" height="260" fill="url(#c-bg)" rx="12" />
+        <g>
+          <rect x="30" y="40" width="180" height="36" rx="18" fill="rgba(167,139,250,0.15)" />
+          <text x="45" y="63" fill="#c4b5fd" fontSize="11" fontFamily="monospace">Build me a blog site...</text>
+          <rect x="190" y="100" width="180" height="36" rx="18" fill="rgba(236,72,153,0.15)" />
+          <text x="205" y="123" fill="#f9a8d4" fontSize="11" fontFamily="monospace">Generating layout ✦</text>
+          <rect x="30" y="160" width="200" height="36" rx="18" fill="rgba(167,139,250,0.15)" />
+          <text x="45" y="183" fill="#c4b5fd" fontSize="11" fontFamily="monospace">Make the header sticky</text>
+        </g>
+        <text x="20" y="240" fill="#d8b4fe" fontSize="10" fontFamily="monospace" opacity="0.5">
+          LLM · Next.js · No-code
+        </text>
+      </svg>
+    );
+  }
+  // PM visual — clean proportioned dashboard
+  // Layout (400×260):
+  //   y 0–14  : branding bar
+  //   y 18–74 : 4 KPI cards (height 56)
+  //   y 80    : divider
+  //   y 88–218: bar chart (baseline y=218, tallest bar 120px → y=98)
+  //   y 226–  : year labels + footer
   return (
     <svg viewBox="0 0 400 260" className="w-full h-full">
       <defs>
-        <linearGradient id="c-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#1a0b2e" />
-          <stop offset="100%" stopColor="#0a0414" />
+        <linearGradient id="pm-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#1c1007" />
+          <stop offset="100%" stopColor="#0d0602" />
+        </linearGradient>
+        <linearGradient id="pm-bar" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stopColor="#c2410c" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#fb923c" stopOpacity="0.9" />
         </linearGradient>
       </defs>
-      <rect width="400" height="260" fill="url(#c-bg)" rx="12" />
-      {/* Chat bubbles */}
-      <g>
-        <rect x="30" y="40" width="180" height="36" rx="18" fill="rgba(167,139,250,0.15)" />
-        <text x="45" y="63" fill="#c4b5fd" fontSize="11" fontFamily="monospace">Build me a blog site...</text>
-        <rect x="190" y="100" width="180" height="36" rx="18" fill="rgba(236,72,153,0.15)" />
-        <text x="205" y="123" fill="#f9a8d4" fontSize="11" fontFamily="monospace">Generating layout ✦</text>
-        <rect x="30" y="160" width="200" height="36" rx="18" fill="rgba(167,139,250,0.15)" />
-        <text x="45" y="183" fill="#c4b5fd" fontSize="11" fontFamily="monospace">Make the header sticky</text>
-      </g>
-      <text x="20" y="240" fill="#d8b4fe" fontSize="10" fontFamily="monospace" opacity="0.5">
-        LLM · Next.js · No-code
+      <rect width="400" height="260" fill="url(#pm-bg)" rx="12" />
+
+      {/* Branding row */}
+      <text x="20" y="13" fill="#fb923c" fontSize="9" fontFamily="monospace" opacity="0.55" letterSpacing="2">HELLOR IDE · PRODUCT PLATFORM</text>
+
+      {/* KPI cards — 4 cards, each 82×56, spaced with 6px gaps inside 400px */}
+      {/* total = 4×82 + 3×6 + 2×20 = 328+18+40 = 386 → fits */}
+      {[
+        { x: 20,  value: '500M+', label: 'USERS' },
+        { x: 108, value: '80%',   label: 'ADOPTION' },
+        { x: 196, value: '3 YRS', label: 'AS PM' },
+        { x: 284, value: '2,000+',label: 'TEAMS' },
+      ].map((kpi) => (
+        <g key={kpi.x}>
+          <rect x={kpi.x} y="18" width="88" height="56" rx="6"
+            fill="rgba(251,146,60,0.07)" stroke="rgba(251,146,60,0.18)" strokeWidth="0.7" />
+          <text x={kpi.x + 44} y="45" fill="#fb923c" fontSize="14" fontFamily="monospace"
+            fontWeight="bold" textAnchor="middle">{kpi.value}</text>
+          <text x={kpi.x + 44} y="62" fill="#fbbf24" fontSize="7.5" fontFamily="monospace"
+            opacity="0.55" textAnchor="middle" letterSpacing="1">{kpi.label}</text>
+        </g>
+      ))}
+
+      {/* Divider */}
+      <line x1="20" y1="82" x2="380" y2="82" stroke="rgba(251,146,60,0.12)" />
+
+      {/* Horizontal guide lines for bar chart */}
+      {[98, 128, 158, 188].map((gy) => (
+        <line key={gy} x1="20" y1={gy} x2="378" y2={gy}
+          stroke="rgba(251,146,60,0.06)" strokeDasharray="3 4" />
+      ))}
+
+      {/* Bar chart: baseline = 218, bars for 7 quarters */}
+      {/* x positions: start=30, bar width=34, gap=18, stride=52 */}
+      {/* heights grow left-to-right with slight dip at end */}
+      {[
+        { x: 30,  h: 32  },
+        { x: 82,  h: 50  },
+        { x: 134, h: 72  },
+        { x: 186, h: 96  },
+        { x: 238, h: 118 },
+        { x: 290, h: 130 },
+        { x: 342, h: 122 },
+      ].map((bar, i) => (
+        <g key={i}>
+          <rect x={bar.x} y={218 - bar.h} width="28" height={bar.h} rx="3"
+            fill="url(#pm-bar)" opacity={0.65 + i * 0.04} />
+        </g>
+      ))}
+
+      {/* Baseline */}
+      <line x1="20" y1="218" x2="378" y2="218" stroke="rgba(251,146,60,0.25)" />
+
+      {/* Year labels */}
+      {[
+        { x: 44,  label: '2021' },
+        { x: 148, label: '2022' },
+        { x: 252, label: '2023' },
+        { x: 356, label: '2024' },
+      ].map((lbl) => (
+        <text key={lbl.x} x={lbl.x} y="232" fill="#fdba74" fontSize="8"
+          fontFamily="monospace" opacity="0.45" textAnchor="middle">{lbl.label}</text>
+      ))}
+
+      {/* Footer */}
+      <text x="20" y="250" fill="#fdba74" fontSize="8.5" fontFamily="monospace" opacity="0.4">
+        Hello TransTech (HelloRide) · Shanghai · May 2021 — Jul 2024
       </text>
     </svg>
   );
@@ -188,7 +293,7 @@ export default function Projects() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: false, margin: '-100px' }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-[11px] tracking-[0.25em] uppercase text-apple-blue mb-6"
         >
@@ -198,7 +303,7 @@ export default function Projects() {
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: false, margin: '-100px' }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="font-display text-[32px] sm:text-[44px] md:text-[56px] lg:text-[64px] leading-[1.05] tracking-tightest font-semibold max-w-4xl"
         >
@@ -212,7 +317,7 @@ export default function Projects() {
               key={project.title}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-100px' }}
+              viewport={{ once: false, margin: '-100px' }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="relative"
             >
@@ -283,24 +388,26 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  <div className="mt-7 flex flex-wrap gap-3">
-                    {project.links.map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-1.5 px-4 py-2 glass-light hover:bg-white/[0.08] text-apple-text text-[13px] font-medium rounded-full btn-lift"
-                      >
-                        {link.icon === 'github' ? <Github size={14} /> : null}
-                        {link.label}
-                        <ArrowUpRight
-                          size={14}
-                          className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                        />
-                      </a>
-                    ))}
-                  </div>
+                  {project.links.length > 0 && (
+                    <div className="mt-7 flex flex-wrap gap-3">
+                      {project.links.map((link) => (
+                        <a
+                          key={link.href}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group inline-flex items-center gap-1.5 px-4 py-2 glass-light hover:bg-white/[0.08] text-apple-text text-[13px] font-medium rounded-full btn-lift"
+                        >
+                          {link.icon === 'github' ? <Github size={14} /> : null}
+                          {link.label}
+                          <ArrowUpRight
+                            size={14}
+                            className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                          />
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.article>

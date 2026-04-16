@@ -50,14 +50,14 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative py-24 md:py-40 overflow-hidden">
-      {/* Ambient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-apple-blue/10 blur-[150px] pointer-events-none" />
+      {/* Ambient glow — desktop only */}
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-apple-blue/10 blur-[150px] pointer-events-none" />
 
       <div className="relative max-w-5xl mx-auto px-6 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: false, margin: '-100px' }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-[11px] tracking-[0.25em] uppercase text-apple-blue mb-6 text-center"
         >
@@ -67,7 +67,7 @@ export default function Contact() {
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: false, margin: '-100px' }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="font-display text-[36px] sm:text-[52px] md:text-[68px] lg:text-[84px] leading-[0.98] tracking-tightest font-semibold text-center max-w-4xl mx-auto"
         >
@@ -79,11 +79,11 @@ export default function Contact() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: false, margin: '-100px' }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           className="mt-6 text-center text-lg text-apple-text/60 max-w-xl mx-auto"
         >
-          Open to internship, part-time, and full-time roles across Australia and North America.
+          Open to internship, part-time, and full-time roles across Australia.
           Usually replies within 24 hours.
         </motion.p>
 
@@ -92,7 +92,7 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: false, margin: '-100px' }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-3"
           >
@@ -142,7 +142,7 @@ export default function Contact() {
                 <Github size={15} strokeWidth={1.8} /> GitHub
               </a>
               <a
-                href="https://linkedin.com/in/your-handle"
+                href="https://www.linkedin.com/in/yan-feng-b18929190/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 glass-light rounded-2xl p-4 hover:bg-white/[0.08] transition-all duration-500 text-[13px] text-apple-text btn-lift"
@@ -157,7 +157,7 @@ export default function Contact() {
             onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: false, margin: '-100px' }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
             className="glass-light rounded-3xl p-6 md:p-8 space-y-5"
           >

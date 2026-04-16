@@ -54,7 +54,7 @@ export async function POST(req: Request) {
       if (error) {
         console.error('Resend error:', error);
         return NextResponse.json(
-          { error: 'Failed to send — please email directly' },
+          { error: 'Failed to send — please email directly', detail: error },
           { status: 500 }
         );
       }

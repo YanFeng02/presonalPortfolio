@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata: Metadata = {
   title: 'Feng Yan — Full-Stack Developer',
@@ -22,7 +24,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-black text-apple-text antialiased">{children}</body>
+      <body className="bg-black text-apple-text antialiased">
+        {children}
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }

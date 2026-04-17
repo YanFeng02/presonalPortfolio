@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     // Device type
     const isMobile = /Mobile|Android|iPhone|iPad/i.test(userAgent || '');
     const isTablet = /iPad|Tablet/i.test(userAgent || '');
-    const deviceType = isTablet ? '📟 Tablet' : isMobile ? '📱 Mobile' : '🖥️ Desktop';
+    const deviceType = isTablet ? 'Tablet' : isMobile ? 'Mobile' : 'Desktop';
 
     const browserMatch = (userAgent || '').match(
       /(Chrome|Safari|Firefox|Edge|OPR|SamsungBrowser)\/[\d.]+/
@@ -59,9 +59,41 @@ export async function POST(req: Request) {
       : 'Direct';
 
     const touch = maxTouchPoints > 0 ? `Touch (${maxTouchPoints} pts)` : 'No touch';
-    const network = [connectionType, downlink ? `${downlink} Mbps` : null].filter(Boolean).join(' · ') || '?';
+    const network = [connectionType, downlink ? `${downlink} Mbps` : null].filter(Boolean).join(', ') || '?';
     const memory = deviceMemory ? `${deviceMemory} GB` : '?';
     const cores = hardwareConcurrency ? `${hardwareConcurrency} cores` : '?';
+
+    const row = (label: string, value: string) =>
+      `${label.padEnd(14)}${value}`;
+
+    const table = [
+      '[ LOCATION & NETWORK ]',
+      row('Location',  location),
+      row('IP',        ip),
+      row('Timezone',  timezone || '?'),
+      '',
+      '[ PAGE ]',
+      row('Page',      page || '/'),
+      row('Referrer',  ref),
+      row('Language',  language || '?'),
+      '',
+      '[ DEVICE ]',
+      row('Type',      deviceType),
+      row('Browser',   browser),
+      row('OS',        `${os} (${platform || '?'})`),
+      row('Screen',    `${screenResolution}  DPR: ${devicePixelRatio}x`),
+      row('Viewport',  viewportSize || '?'),
+      row('Color',     colorDepth ? `${colorDepth}-bit` : '?'),
+      row('Touch',     touch),
+      '',
+      '[ HARDWARE ]',
+      row('RAM',       memory),
+      row('CPU',       cores),
+      row('Network',   network),
+      '',
+      '[ TIME ]',
+      row('Local',     localTime || '?'),
+    ].join('\n');
 
     await fetch(webhookUrl, {
       method: 'POST',
@@ -69,31 +101,9 @@ export async function POST(req: Request) {
       body: JSON.stringify({
         embeds: [
           {
-            title: '👀 New Portfolio Visitor',
+            title: 'New Portfolio Visitor',
             color: 0x5865f2,
-            fields: [
-              { name: '📍 Location', value: location, inline: true },
-              { name: '🌐 IP', value: `\`${ip}\``, inline: true },
-              { name: '🕐 Timezone', value: timezone || '?', inline: true },
-
-              { name: '📄 Page', value: page || '/', inline: true },
-              { name: '🔗 Referrer', value: ref, inline: true },
-              { name: '🗣️ Language', value: language || '?', inline: true },
-
-              { name: '💻 Device', value: `${deviceType} · ${browser}`, inline: true },
-              { name: '🖥️ OS', value: `${os} (${platform || '?'})`, inline: true },
-              { name: '📐 Screen', value: `${screenResolution} · ${devicePixelRatio}x DPR`, inline: true },
-
-              { name: '🪟 Viewport', value: viewportSize || '?', inline: true },
-              { name: '🎨 Color Depth', value: colorDepth ? `${colorDepth}-bit` : '?', inline: true },
-              { name: '👆 Touch', value: touch, inline: true },
-
-              { name: '⚡ Network', value: network, inline: true },
-              { name: '🧠 RAM', value: memory, inline: true },
-              { name: '🔢 CPU', value: cores, inline: true },
-
-              { name: '🕒 Local Time', value: localTime || '?', inline: false },
-            ],
+            description: `\`\`\`\n${table}\n\`\`\``,
             timestamp: new Date().toISOString(),
             footer: { text: 'Portfolio Tracker' },
           },

@@ -23,7 +23,7 @@ const timeline: TimelineItem[] = [
     description:
       'Ran live product demos at the Sydney Home Show and Costco roadshows, selling 7 robotic mowers face to face.',
     photos: [
-      { src: '/photos/anthbot-sydney.jpg', alt: 'At the Anthbot stand, Sydney Home Show', width: 750, height: 1000 },
+      { src: '/experience/anthbot-sydney.jpg', alt: 'At the Anthbot stand, Sydney Home Show', width: 750, height: 1000 },
     ],
   },
   {
@@ -66,8 +66,8 @@ const timeline: TimelineItem[] = [
       'Designed rule-based access provisioning linked to the HR system, cutting 20,000+ manual approvals a year by 90%',
     ],
     photos: [
-      { src: '/photos/helloride-team.jpg', alt: 'With teammates at HelloRide, Shanghai', width: 1200, height: 900 },
-      { src: '/photos/helloride-group.jpg', alt: 'HelloRide team event, Shanghai', width: 1200, height: 800 },
+      { src: '/experience/helloride-team.jpg', alt: 'With teammates at HelloRide, Shanghai', width: 1200, height: 900 },
+      { src: '/experience/helloride-group.jpg', alt: 'HelloRide team event, Shanghai', width: 1200, height: 800 },
     ],
   },
   {

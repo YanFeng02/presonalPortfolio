@@ -25,7 +25,6 @@ const projects: Project[] = [
       'Built the Zoom integration end to end: OAuth 2.0, encrypted token storage, 27 unit tests and the scheduling pages in Next.js.',
     ],
     stack: ['Django', 'Django Channels', 'Next.js', 'PostgreSQL', 'Redis', 'Celery', 'Docker'],
-    link: { label: 'marketing.simplified.dpdns.org', href: 'https://marketing.simplified.dpdns.org' },
   },
   {
     title: 'Web Builder Agent',
@@ -52,7 +51,6 @@ const projects: Project[] = [
       'Hosted on Vercel and AWS, with CI/CD from GitHub.',
     ],
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Stripe', 'Clerk', 'Vercel', 'AWS'],
-    link: { label: 'rxtech.com.au', href: 'https://rxtech.com.au' },
   },
 ];
 

@@ -26,12 +26,9 @@ export default function About() {
           was real-time messaging and making sure each customer's data stayed separate.
         </p>
         <p>
-          I also built the online store for{' '}
-          <a href="https://rxtech.com.au" target="_blank" rel="noopener noreferrer" className="link">
-            Universe Time Pty Ltd
-          </a>{' '}
-          as a full-stack developer, including the storefront, Stripe payments, an admin panel for
-          the staff and the deployment.
+          I also built the online store for Universe Time Pty Ltd as a full-stack developer,
+          including the storefront, Stripe payments, an admin panel for the staff and the
+          deployment.
         </p>
         <p>
           Before I moved into engineering I was a product manager at HelloRide for three years. A

@@ -1,40 +1,51 @@
 import Image from 'next/image';
 
+const links = [
+  { label: 'GitHub', href: 'https://github.com/YanFeng02' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/yan-feng-b18929190/' },
+  { label: 'Email', href: 'mailto:fengyanfrank@126.com' },
+];
+
 export default function Hero() {
   return (
-    <section className="pt-16 pb-14">
-      <Image
-        src="/avatar.jpg"
-        alt="Feng Yan"
-        width={72}
-        height={72}
-        className="w-[72px] h-[72px] rounded-full object-cover"
-        priority
-      />
+    <section className="pt-16 pb-16">
+      <div className="flex items-center gap-4">
+        <Image
+          src="/avatar.jpg"
+          alt="Feng Yan"
+          width={128}
+          height={128}
+          className="w-16 h-16 rounded-full object-cover ring-1 ring-line"
+          priority
+        />
+        <div>
+          <h1 className="text-[22px] font-semibold tracking-tight leading-tight">Feng Yan</h1>
+          <p className="text-[15px] text-muted">Full-stack developer in Sydney</p>
+        </div>
+      </div>
 
-      <h1 className="mt-6 text-[28px] font-semibold tracking-tight">Feng Yan</h1>
-      <p className="mt-1 text-muted">Full-stack developer · Sydney, NSW</p>
-
-      <p className="mt-6 leading-relaxed">
-        I take features from requirements to production — Django and Next.js on the web,
-        LangGraph and the Claude API for agents. Finishing a Master of Computer Science at
-        UOW; previously a product manager at a platform with 500M+ users.
+      <p className="mt-8 text-[17px] leading-[1.7]">
+        I build web apps with Django and Next.js, and lately AI agents with LangGraph and the
+        Claude API. I'm finishing my Master of Computer Science at UOW this December.{' '}
+        <span className="text-muted">
+          Before that I spent three years as a product manager in Shanghai.
+        </span>
       </p>
 
-      <p className="mt-4 text-[14px] text-muted">
-        Open to full-time roles from Dec 2026 · Valid Australian work visa
-      </p>
-
-      <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[14px]">
-        <a href="https://github.com/YanFeng02" target="_blank" rel="noopener noreferrer" className="link">
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/yan-feng-b18929190/" target="_blank" rel="noopener noreferrer" className="link">
-          LinkedIn
-        </a>
-        <a href="mailto:fengyanfrank@126.com" className="link">
-          Email
-        </a>
+      <div className="mt-8">
+        <div className="flex gap-5 text-[14px]">
+          {links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel="noopener noreferrer"
+              className="text-muted hover:text-fg transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );

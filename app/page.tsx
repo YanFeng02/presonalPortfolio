@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
+import PhotosTeaser from './components/PhotosTeaser';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -13,8 +14,9 @@ export default function Home() {
       <main className="max-w-2xl mx-auto px-5 sm:px-6">
         <Hero />
         <About />
-        <Projects />
         <Experience />
+        <Projects />
+        <PhotosTeaser />
         <Contact />
         <Footer />
       </main>

@@ -1,10 +1,10 @@
 import Section from './Section';
 
 const stats = [
-  { value: '3 yrs', label: 'Product management' },
-  { value: '500M+', label: 'Platform users' },
-  { value: '80%+', label: 'BI platform adoption' },
-  { value: '30s → 2s', label: 'Bulk import speed-up' },
+  { value: '3 yrs', label: 'As a product manager' },
+  { value: '500M+', label: 'Users on HelloRide' },
+  { value: '80%+', label: 'Staff using the BI platform' },
+  { value: '30s → 2s', label: 'Bulk import time' },
 ];
 
 const toolkit = [
@@ -13,46 +13,45 @@ const toolkit = [
   { category: 'Frontend', skills: ['React', 'Next.js', 'Tailwind CSS', 'Zustand', 'Tiptap'] },
   { category: 'Databases', skills: ['PostgreSQL', 'MySQL', 'Redis'] },
   { category: 'DevOps & Cloud', skills: ['Docker', 'Nginx', 'AWS', 'Vercel', 'Git', 'CI/CD'] },
-  { category: 'AI', skills: ['LangGraph', 'Claude API (tool use)', 'Claude Code', 'GitHub Copilot'] },
+  { category: 'AI', skills: ['LangGraph', 'Claude API', 'Claude Code', 'GitHub Copilot'] },
 ];
 
 export default function About() {
   return (
     <Section id="about" title="About">
-      <div className="space-y-4 leading-relaxed">
+      <div className="space-y-5 leading-[1.75]">
         <p>
-          I'm a full-stack developer finishing my Master of Computer Science at the University
-          of Wollongong (Dec 2026). During a remote internship at Marketing Simplified I built
-          real-time and multi-tenant features for mediaJira, an advertising operations SaaS
-          running on Django, Next.js and 18 Docker services.
+          Earlier this year I did a remote internship at Marketing Simplified, working on
+          mediaJira, an ad operations platform built on Django and Next.js. Most of my work there
+          was real-time messaging and making sure each customer's data stayed separate.
         </p>
         <p>
-          I also built{' '}
+          I also built the online store for{' '}
           <a href="https://rxtech.com.au" target="_blank" rel="noopener noreferrer" className="link">
-            rxtech.com.au
+            Universe Time Pty Ltd
           </a>{' '}
-          on my own — an e-commerce store for an Australian robotic mower retailer, from
-          storefront to Stripe payments and deployment.
+          as a full-stack developer, including the storefront, Stripe payments, an admin panel for
+          the staff and the deployment.
         </p>
         <p>
-          Before switching to engineering I spent three years as a product manager at HelloRide,
-          working closely with developers on APIs, data models and releases. That's why I'm
-          comfortable owning a feature from requirements all the way to production.
+          Before I moved into engineering I was a product manager at HelloRide for three years. A
+          lot of that time was spent with developers working through APIs, data models and release
+          plans, so I'm used to thinking about why a feature exists, not just how to build it.
         </p>
       </div>
 
-      <dl className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6">
+      <dl className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-y-6">
         {stats.map((s) => (
-          <div key={s.label}>
-            <dt className="text-[13px] text-muted">{s.label}</dt>
-            <dd className="mt-1 text-xl font-semibold tabular-nums">{s.value}</dd>
+          <div key={s.label} className="border-l border-line pl-4">
+            <dd className="text-[22px] font-semibold tracking-tight tabular-nums">{s.value}</dd>
+            <dt className="mt-1 text-[12px] leading-snug text-muted pr-2">{s.label}</dt>
           </div>
         ))}
       </dl>
 
-      <dl className="mt-10 space-y-2 text-[14px]">
+      <dl className="mt-12 divide-y divide-line border-t border-line text-[14px]">
         {toolkit.map((group) => (
-          <div key={group.category} className="grid sm:grid-cols-[140px_1fr] gap-x-4">
+          <div key={group.category} className="grid sm:grid-cols-[140px_1fr] gap-x-4 gap-y-0.5 py-2.5">
             <dt className="text-muted">{group.category}</dt>
             <dd>{group.skills.join(', ')}</dd>
           </div>

@@ -19,9 +19,9 @@ const timeline: TimelineItem[] = [
     title: 'Sales Representative (Casual)',
     org: 'Anthbot Robotic Mowers',
     location: 'Sydney',
-    period: 'Oct 2026 — Present',
+    period: 'Oct 2026 – Now',
     description:
-      'Ran live product demos at the Sydney Home Show and Costco roadshows, selling 7 robotic mowers face to face.',
+      'Running live demos at the Sydney Home Show and Costco roadshows. Sold 7 mowers so far, all face to face.',
     photos: [
       { src: '/experience/anthbot-sydney.jpg', alt: 'At the Anthbot stand, Sydney Home Show', width: 750, height: 1000 },
     ],
@@ -31,26 +31,18 @@ const timeline: TimelineItem[] = [
     title: 'Full-Stack Engineer Intern',
     org: 'Marketing Simplified',
     location: 'Remote',
-    period: 'Mar 2026 — Jun 2026',
+    period: 'Mar–Jun 2026',
     description:
-      'Worked on mediaJira, an advertising operations platform (Django, Next.js, 18-service Docker setup), in a distributed team using Agile sprints, Jira and GitHub PR reviews.',
-    highlights: [
-      'Built a real-time support workspace with Django Channels — per-agent, per-conversation and new-ticket groups so events only reach the people who need them',
-      'Enforced tenant isolation across REST and WebSocket, with ownership checks, upload validation and pagination',
-      'Cut large CSV/XLSX import time from ~30s to under 2s with bulk inserts, fewer queries and parallel chunked uploads',
-      'Designed the customer data model and idempotent organisation setup on first project',
-      'Built queue and team management (T1–T4), invitations and a rich-text quick-reply library',
-      'Built the Zoom integration end to end: OAuth 2.0, encrypted token storage, 27 unit tests, Next.js scheduling pages',
-    ],
+      'Worked on mediaJira, an ad operations platform, as part of a distributed team. We ran Agile sprints with Jira tickets and GitHub PR reviews. What I built there is under Selected work.',
   },
   {
     kind: 'edu',
     title: 'Master of Computer Science',
     org: 'University of Wollongong',
     location: 'Australia',
-    period: 'Jul 2024 — Dec 2026',
+    period: 'Jul 2024 – Dec 2026',
     description:
-      'Full-Stack Web Development, AI and Cybersecurity, Computer Networks, Cryptography.',
+      'Coursework in full-stack web development, AI and cybersecurity, computer networks and cryptography.',
     tag: 'Current',
   },
   {
@@ -58,12 +50,12 @@ const timeline: TimelineItem[] = [
     title: 'Senior Product Manager',
     org: 'Hello TransTech (HelloRide)',
     location: 'Shanghai',
-    period: 'May 2021 — Jul 2024',
-    description: 'Shared-mobility platform with 500M+ registered users.',
+    period: 'May 2021 – Jul 2024',
+    description: 'HelloRide is a shared-mobility platform with over 500 million registered users.',
     highlights: [
-      'Owned the internal BI and data visualisation platform, used by 80%+ of staff across all business units',
-      'Shipped an LLM-based natural-language data query tool (metadata annotation + Dify knowledge base) so business users could get data without SQL',
-      'Designed rule-based access provisioning linked to the HR system, cutting 20,000+ manual approvals a year by 90%',
+      'Owned the internal BI and data visualisation platform. Over 80% of staff across every business unit used it.',
+      'Shipped an LLM-based tool for asking data questions in plain language, using metadata annotation and a Dify knowledge base, so business teams could get numbers without writing SQL.',
+      'Designed rule-based access provisioning tied to the HR system, which cut more than 20,000 manual approvals a year by 90%.',
     ],
     photos: [
       { src: '/experience/helloride-team.jpg', alt: 'With teammates at HelloRide, Shanghai', width: 1200, height: 900 },
@@ -75,7 +67,7 @@ const timeline: TimelineItem[] = [
     title: 'Master of Finance (Merit)',
     org: 'Queen Mary University of London',
     location: 'United Kingdom',
-    period: 'Oct 2019 — Nov 2020',
+    period: 'Oct 2019 – Nov 2020',
     description: '',
   },
   {
@@ -83,7 +75,7 @@ const timeline: TimelineItem[] = [
     title: 'Bachelor of Economics',
     org: 'Jiangxi Agricultural University',
     location: 'China',
-    period: 'Sep 2015 — Jun 2019',
+    period: 'Sep 2015 – Jun 2019',
     description: '',
   },
 ];
@@ -91,23 +83,29 @@ const timeline: TimelineItem[] = [
 export default function Experience() {
   return (
     <Section id="experience" title="Experience & education">
-      <ol className="space-y-8">
+      <ol className="space-y-10">
         {timeline.map((item) => (
           <li key={item.title} className="grid sm:grid-cols-[140px_1fr] gap-x-4 gap-y-1">
-            <div className="text-[13px] text-muted pt-0.5">{item.period}</div>
+            <div className="text-[13px] text-muted tabular-nums pt-0.5">{item.period}</div>
             <div>
-              <h3 className="font-medium">
+              <h3 className="font-semibold tracking-tight">
                 {item.title}
-                {item.tag && <span className="ml-2 text-[12px] font-normal text-muted">· {item.tag}</span>}
+                {item.tag && (
+                  <span className="ml-2 rounded-full bg-subtle px-2 py-0.5 align-middle text-[11px] font-normal text-muted">
+                    {item.tag}
+                  </span>
+                )}
               </h3>
               <div className="text-[14px] text-muted">
                 {item.org}, {item.location}
               </div>
-              {item.description && <p className="mt-2 text-[14px] leading-relaxed">{item.description}</p>}
+              {item.description && <p className="mt-3 text-[15px] leading-relaxed">{item.description}</p>}
               {item.highlights && (
-                <ul className="mt-2 space-y-1.5 text-[14px] text-muted list-disc pl-5 marker:text-line">
+                <ul className="mt-3 space-y-2 text-[14px] text-muted">
                   {item.highlights.map((h) => (
-                    <li key={h} className="leading-relaxed">{h}</li>
+                    <li key={h} className="relative pl-4 leading-relaxed before:absolute before:left-0 before:top-[0.7em] before:w-1.5 before:h-px before:bg-muted">
+                      {h}
+                    </li>
                   ))}
                 </ul>
               )}
@@ -122,7 +120,7 @@ export default function Experience() {
                         width={photo.width}
                         height={photo.height}
                         sizes="200px"
-                        className="h-28 sm:h-32 w-auto rounded-md border border-line object-cover hover:opacity-85 transition-opacity"
+                        className="h-28 sm:h-32 w-auto rounded-lg ring-1 ring-line object-cover hover:opacity-90 transition-opacity"
                       />
                     </a>
                   ))}

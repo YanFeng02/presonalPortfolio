@@ -6,22 +6,22 @@ import Gallery from './Gallery';
 import { photos, portrait } from './data';
 
 export const metadata: Metadata = {
-  title: 'Photos — Feng Yan',
+  title: 'Photos · Feng Yan',
   description: 'Photography by Feng Yan: London, Shanghai, Yunnan and Sydney.',
 };
 
 export default function PhotosPage() {
   return (
     <>
-      <Nav />
+      <Nav current="/photos" />
       <main>
         <div className="max-w-2xl mx-auto px-5 sm:px-6">
           <section className="pt-16 pb-12 grid sm:grid-cols-[1fr_220px] gap-8 items-end">
             <div>
               <h1 className="text-[28px] font-semibold tracking-tight">Photos</h1>
-              <p className="mt-4 leading-relaxed">
-                Away from the keyboard I take photos — mostly cities, coastlines and the light at
-                either end of the day. From London to Shanghai, Yunnan and Sydney, newest first.
+              <p className="mt-4 leading-[1.75]">
+                I take photos when I travel, mostly cities, the coast and whatever the light is
+                doing early or late in the day. These are from London, Shanghai, Yunnan and Sydney.
               </p>
             </div>
             <figure>
@@ -31,10 +31,10 @@ export default function PhotosPage() {
                 width={portrait.width}
                 height={portrait.height}
                 sizes="220px"
-                className="w-full h-auto rounded-md"
+                className="w-full h-auto rounded-lg ring-1 ring-line"
                 priority
               />
-              <figcaption className="mt-2 text-[12px] text-muted">Behind the camera</figcaption>
+              <figcaption className="mt-2 text-[12px] text-muted">Me, on Sydney Harbour</figcaption>
             </figure>
           </section>
         </div>

@@ -49,20 +49,22 @@ export default function Contact() {
 
   return (
     <Section id="contact" title="Contact">
-      <p className="leading-relaxed">
-        Open to internship, part-time, and full-time roles across Australia. Usually replies within 24 hours.
+      <p className="leading-[1.75]">
+        I'm looking for full-time roles in Australia starting December 2026, and I'm happy to talk
+        about internships or part-time work too. I have a valid Australian work visa and usually
+        reply within a day.
       </p>
 
-      <dl className="mt-6 space-y-1 text-[14px]">
-        <div className="grid grid-cols-[80px_1fr]">
+      <dl className="mt-8 divide-y divide-line border-y border-line text-[14px]">
+        <div className="grid grid-cols-[96px_1fr] py-2.5">
           <dt className="text-muted">Email</dt>
           <dd><a href="mailto:fengyanfrank@126.com" className="link">fengyanfrank@126.com</a></dd>
         </div>
-        <div className="grid grid-cols-[80px_1fr]">
+        <div className="grid grid-cols-[96px_1fr] py-2.5">
           <dt className="text-muted">Phone</dt>
           <dd><a href="tel:+61421798034" className="link">0421 798 034</a></dd>
         </div>
-        <div className="grid grid-cols-[80px_1fr]">
+        <div className="grid grid-cols-[96px_1fr] py-2.5">
           <dt className="text-muted">Location</dt>
           <dd>Sydney, NSW · Open to remote</dd>
         </div>
@@ -79,7 +81,7 @@ export default function Contact() {
               maxLength={120}
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full bg-transparent border border-line rounded-md px-3 py-2 text-[14px] placeholder:text-muted/60 focus:outline-none focus:border-fg transition-colors"
+              className="w-full bg-transparent border border-line rounded-lg px-3 py-2.5 text-[14px] focus:outline-none focus:border-muted transition-colors"
             />
           </div>
           <div>
@@ -91,7 +93,7 @@ export default function Contact() {
               maxLength={200}
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full bg-transparent border border-line rounded-md px-3 py-2 text-[14px] placeholder:text-muted/60 focus:outline-none focus:border-fg transition-colors"
+              className="w-full bg-transparent border border-line rounded-lg px-3 py-2.5 text-[14px] focus:outline-none focus:border-muted transition-colors"
             />
           </div>
         </div>
@@ -104,7 +106,7 @@ export default function Contact() {
             rows={5}
             value={form.message}
             onChange={(e) => setForm({ ...form, message: e.target.value })}
-            className="w-full bg-transparent border border-line rounded-md px-3 py-2 text-[14px] placeholder:text-muted/60 focus:outline-none focus:border-fg transition-colors resize-none"
+            className="w-full bg-transparent border border-line rounded-lg px-3 py-2.5 text-[14px] focus:outline-none focus:border-muted transition-colors resize-none"
           />
         </div>
 
@@ -112,12 +114,12 @@ export default function Contact() {
           <button
             type="submit"
             disabled={status === 'sending' || status === 'sent'}
-            className="px-4 py-2 text-[14px] font-medium rounded-md bg-fg text-bg hover:opacity-85 disabled:opacity-50 transition-opacity"
+            className="px-5 py-2.5 text-[14px] font-medium rounded-full bg-fg text-bg hover:opacity-85 disabled:opacity-50 transition-opacity"
           >
             {status === 'sending' ? 'Sending…' : status === 'sent' ? 'Sent' : 'Send message'}
           </button>
           <span className="text-[13px] text-muted">
-            {status === 'sent' && "Thanks — I'll be in touch shortly."}
+            {status === 'sent' && "Thanks, I'll get back to you soon."}
             {status === 'error' && (errorMsg || 'Something went wrong. Please email me directly.')}
           </span>
         </div>

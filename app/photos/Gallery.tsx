@@ -77,7 +77,7 @@ export default function Gallery({ photos }: { photos: Photo[] }) {
                   <button
                     key={photo.slug}
                     onClick={() => setOpen(i)}
-                    className="block w-full overflow-hidden rounded-md bg-line"
+                    className="group block w-full overflow-hidden rounded-lg bg-line"
                     aria-label={`Open ${photo.caption}`}
                   >
                     <Image
@@ -86,7 +86,7 @@ export default function Gallery({ photos }: { photos: Photo[] }) {
                       width={photo.width}
                       height={photo.height}
                       sizes="(min-width: 1024px) 340px, (min-width: 640px) 50vw, 100vw"
-                      className="w-full h-auto hover:opacity-90 transition-opacity"
+                      className="w-full h-auto transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                     />
                   </button>
                 );

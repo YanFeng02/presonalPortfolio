@@ -1,15 +1,18 @@
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Tracker from './components/Tracker';
 
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+
 export const metadata: Metadata = {
-  title: 'Feng Yan — Full-Stack Developer',
+  title: 'Feng Yan · Full-stack developer',
   description:
-    'Full-stack developer in Sydney. Django, Next.js and AI agents. Master of Computer Science at UOW, ex-product manager.',
+    'Full-stack developer in Sydney working with Django, Next.js and AI agents. Master of Computer Science at UOW, previously a product manager.',
   openGraph: {
-    title: 'Feng Yan — Full-Stack Developer',
+    title: 'Feng Yan · Full-stack developer',
     description: 'Full-stack developer · Sydney · Django, Next.js, AI agents',
     type: 'website',
   },
@@ -24,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <body className="font-sans">
         {children}
         <Tracker />

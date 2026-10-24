@@ -22,6 +22,14 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keep anchor targets clear of the sticky header */
+  scroll-padding-top: 72px;
+}
+
+@media (max-width: 639px) {
+  html {
+    scroll-padding-top: 96px;
+  }
 }
 
 body {

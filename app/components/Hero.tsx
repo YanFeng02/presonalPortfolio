@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="pt-10 pb-14">
+    <section className="pt-16 pb-14">
       <Image
         src="/avatar.jpg"
         alt="Feng Yan"

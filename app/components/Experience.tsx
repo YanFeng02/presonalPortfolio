@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Section from './Section';
 
 type TimelineItem = {
@@ -9,17 +10,21 @@ type TimelineItem = {
   description: string;
   highlights?: string[];
   tag?: string;
+  photos?: { src: string; alt: string; width: number; height: number }[];
 };
 
 const timeline: TimelineItem[] = [
   {
     kind: 'work',
     title: 'Sales Representative (Casual)',
-    org: 'Antibot Robotic Mowers',
+    org: 'Anthbot Robotic Mowers',
     location: 'Sydney',
     period: 'Oct 2026 — Present',
     description:
       'Ran live product demos at the Sydney Home Show and Costco roadshows, selling 7 robotic mowers face to face.',
+    photos: [
+      { src: '/photos/anthbot-sydney.jpg', alt: 'At the Anthbot stand, Sydney Home Show', width: 750, height: 1000 },
+    ],
   },
   {
     kind: 'work',
@@ -59,6 +64,10 @@ const timeline: TimelineItem[] = [
       'Owned the internal BI and data visualisation platform, used by 80%+ of staff across all business units',
       'Shipped an LLM-based natural-language data query tool (metadata annotation + Dify knowledge base) so business users could get data without SQL',
       'Designed rule-based access provisioning linked to the HR system, cutting 20,000+ manual approvals a year by 90%',
+    ],
+    photos: [
+      { src: '/photos/helloride-team.jpg', alt: 'With teammates at HelloRide, Shanghai', width: 1200, height: 900 },
+      { src: '/photos/helloride-group.jpg', alt: 'HelloRide team event, Shanghai', width: 1200, height: 800 },
     ],
   },
   {
@@ -101,6 +110,23 @@ export default function Experience() {
                     <li key={h} className="leading-relaxed">{h}</li>
                   ))}
                 </ul>
+              )}
+              {item.photos && (
+                <div className="mt-4 flex gap-2 overflow-x-auto">
+                  {item.photos.map((photo) => (
+                    <a key={photo.src} href={photo.src} target="_blank" rel="noopener noreferrer" className="shrink-0">
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        title={photo.alt}
+                        width={photo.width}
+                        height={photo.height}
+                        sizes="200px"
+                        className="h-28 sm:h-32 w-auto rounded-md border border-line object-cover hover:opacity-85 transition-opacity"
+                      />
+                    </a>
+                  ))}
+                </div>
               )}
             </div>
           </li>

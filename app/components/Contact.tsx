@@ -1,8 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Mail, Send, Github, Linkedin, MapPin, Phone, Check, Loader2 } from 'lucide-react';
+import Section from './Section';
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
 
@@ -49,217 +48,80 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-24 md:py-40 overflow-hidden">
-      {/* Ambient glow — desktop only */}
-      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-apple-blue/10 blur-[150px] pointer-events-none" />
+    <Section id="contact" title="Contact">
+      <p className="leading-relaxed">
+        Open to internship, part-time, and full-time roles across Australia. Usually replies within 24 hours.
+      </p>
 
-      <div className="relative max-w-5xl mx-auto px-6 md:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: '-100px' }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[11px] tracking-[0.25em] uppercase text-apple-blue mb-6 text-center"
-        >
-          — Let's talk
-        </motion.div>
-
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: '-100px' }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-[36px] sm:text-[52px] md:text-[68px] lg:text-[84px] leading-[0.98] tracking-tightest font-semibold text-center max-w-4xl mx-auto"
-        >
-          <span className="gradient-text">Got a role in mind?</span>
-          <br />
-          <span className="gradient-text-blue">Let's build something.</span>
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: '-100px' }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="mt-6 text-center text-lg text-apple-text/60 max-w-xl mx-auto"
-        >
-          Open to internship, part-time, and full-time roles across Australia.
-          Usually replies within 24 hours.
-        </motion.p>
-
-        <div className="mt-14 md:mt-20 grid md:grid-cols-[1fr_1.4fr] gap-8 md:gap-12">
-          {/* Left: Contact details */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: '-100px' }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="space-y-3"
-          >
-            <a
-              href="mailto:fengyanfrank@126.com"
-              className="flex items-start gap-4 glass-light rounded-2xl p-5 hover:bg-white/[0.06] transition-all duration-500 group"
-            >
-              <div className="w-10 h-10 rounded-xl bg-apple-blue/10 flex items-center justify-center flex-shrink-0 group-hover:bg-apple-blue/20 transition-colors">
-                <Mail size={16} className="text-apple-blue" strokeWidth={1.8} />
-              </div>
-              <div className="min-w-0">
-                <div className="text-[11px] tracking-wider uppercase text-apple-muted">Email</div>
-                <div className="text-[14px] text-apple-text mt-0.5 truncate">fengyanfrank@126.com</div>
-              </div>
-            </a>
-
-            <a
-              href="tel:+61476921409"
-              className="flex items-start gap-4 glass-light rounded-2xl p-5 hover:bg-white/[0.06] transition-all duration-500 group"
-            >
-              <div className="w-10 h-10 rounded-xl bg-apple-blue/10 flex items-center justify-center flex-shrink-0 group-hover:bg-apple-blue/20 transition-colors">
-                <Phone size={16} className="text-apple-blue" strokeWidth={1.8} />
-              </div>
-              <div>
-                <div className="text-[11px] tracking-wider uppercase text-apple-muted">Phone</div>
-                <div className="text-[14px] text-apple-text mt-0.5">+61 (0) 476 921 409</div>
-              </div>
-            </a>
-
-            <div className="flex items-start gap-4 glass-light rounded-2xl p-5">
-              <div className="w-10 h-10 rounded-xl bg-apple-blue/10 flex items-center justify-center flex-shrink-0">
-                <MapPin size={16} className="text-apple-blue" strokeWidth={1.8} />
-              </div>
-              <div>
-                <div className="text-[11px] tracking-wider uppercase text-apple-muted">Based in</div>
-                <div className="text-[14px] text-apple-text mt-0.5">Sydney, NSW · Open to remote</div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3 pt-2">
-              <a
-                href="https://github.com/YanFeng02"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 glass-light rounded-2xl p-4 hover:bg-white/[0.08] transition-all duration-500 text-[13px] text-apple-text btn-lift"
-              >
-                <Github size={15} strokeWidth={1.8} /> GitHub
-              </a>
-              <a
-                href="https://www.linkedin.com/in/yan-feng-b18929190/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 glass-light rounded-2xl p-4 hover:bg-white/[0.08] transition-all duration-500 text-[13px] text-apple-text btn-lift"
-              >
-                <Linkedin size={15} strokeWidth={1.8} /> LinkedIn
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Right: Form */}
-          <motion.form
-            onSubmit={handleSubmit}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: '-100px' }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-            className="glass-light rounded-3xl p-6 md:p-8 space-y-5"
-          >
-            <div className="grid sm:grid-cols-2 gap-5">
-              <div>
-                <label htmlFor="name" className="block text-[11px] tracking-wider uppercase text-apple-muted mb-2">
-                  Your name
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  required
-                  maxLength={120}
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full bg-white/[0.03] border border-apple-border rounded-xl px-4 py-3 text-[14px] text-apple-text placeholder:text-apple-muted/50 focus:outline-none focus:border-apple-blue/60 focus:bg-white/[0.05] transition-all duration-300"
-                  placeholder="Jane Doe"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-[11px] tracking-wider uppercase text-apple-muted mb-2">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  maxLength={200}
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full bg-white/[0.03] border border-apple-border rounded-xl px-4 py-3 text-[14px] text-apple-text placeholder:text-apple-muted/50 focus:outline-none focus:border-apple-blue/60 focus:bg-white/[0.05] transition-all duration-300"
-                  placeholder="jane@company.com"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-[11px] tracking-wider uppercase text-apple-muted mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                required
-                maxLength={5000}
-                rows={5}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="w-full bg-white/[0.03] border border-apple-border rounded-xl px-4 py-3 text-[14px] text-apple-text placeholder:text-apple-muted/50 focus:outline-none focus:border-apple-blue/60 focus:bg-white/[0.05] transition-all duration-300 resize-none"
-                placeholder="Tell me about the role, team, or what you'd like to talk about..."
-              />
-            </div>
-
-            <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
-              <div className="text-[12px] text-apple-muted">
-                {status === 'error' && (
-                  <span className="text-red-400">{errorMsg || 'Something went wrong'} — </span>
-                )}
-                {status !== 'sent' && (
-                  <span>
-                    Prefer email?{' '}
-                    <a
-                      href={`mailto:fengyanfrank@126.com`}
-                      className="text-apple-blue hover:text-apple-blueHover link-underline"
-                    >
-                      Write directly →
-                    </a>
-                  </span>
-                )}
-                {status === 'sent' && (
-                  <span className="text-emerald-400 inline-flex items-center gap-1.5">
-                    <Check size={14} /> Message sent. I'll be in touch shortly.
-                  </span>
-                )}
-              </div>
-
-              <button
-                type="submit"
-                disabled={status === 'sending' || status === 'sent'}
-                className={`inline-flex items-center gap-2 px-6 py-3 text-[14px] font-medium rounded-full btn-lift transition-all duration-300 ${
-                  status === 'sent'
-                    ? 'bg-emerald-500 text-white'
-                    : 'bg-apple-blue hover:bg-apple-blueHover text-white disabled:opacity-60'
-                }`}
-              >
-                {status === 'sending' ? (
-                  <>
-                    <Loader2 size={14} className="animate-spin" /> Sending…
-                  </>
-                ) : status === 'sent' ? (
-                  <>
-                    <Check size={14} /> Sent
-                  </>
-                ) : (
-                  <>
-                    Send message <Send size={14} />
-                  </>
-                )}
-              </button>
-            </div>
-          </motion.form>
+      <dl className="mt-6 space-y-1 text-[14px]">
+        <div className="grid grid-cols-[80px_1fr]">
+          <dt className="text-muted">Email</dt>
+          <dd><a href="mailto:fengyanfrank@126.com" className="link">fengyanfrank@126.com</a></dd>
         </div>
-      </div>
-    </section>
+        <div className="grid grid-cols-[80px_1fr]">
+          <dt className="text-muted">Phone</dt>
+          <dd><a href="tel:+61421798034" className="link">0421 798 034</a></dd>
+        </div>
+        <div className="grid grid-cols-[80px_1fr]">
+          <dt className="text-muted">Location</dt>
+          <dd>Sydney, NSW · Open to remote</dd>
+        </div>
+      </dl>
+
+      <form onSubmit={handleSubmit} className="mt-10 space-y-4">
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="name" className="block text-[13px] text-muted mb-1.5">Name</label>
+            <input
+              id="name"
+              type="text"
+              required
+              maxLength={120}
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              className="w-full bg-transparent border border-line rounded-md px-3 py-2 text-[14px] placeholder:text-muted/60 focus:outline-none focus:border-fg transition-colors"
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-[13px] text-muted mb-1.5">Email</label>
+            <input
+              id="email"
+              type="email"
+              required
+              maxLength={200}
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              className="w-full bg-transparent border border-line rounded-md px-3 py-2 text-[14px] placeholder:text-muted/60 focus:outline-none focus:border-fg transition-colors"
+            />
+          </div>
+        </div>
+        <div>
+          <label htmlFor="message" className="block text-[13px] text-muted mb-1.5">Message</label>
+          <textarea
+            id="message"
+            required
+            maxLength={5000}
+            rows={5}
+            value={form.message}
+            onChange={(e) => setForm({ ...form, message: e.target.value })}
+            className="w-full bg-transparent border border-line rounded-md px-3 py-2 text-[14px] placeholder:text-muted/60 focus:outline-none focus:border-fg transition-colors resize-none"
+          />
+        </div>
+
+        <div className="flex flex-wrap items-center gap-4">
+          <button
+            type="submit"
+            disabled={status === 'sending' || status === 'sent'}
+            className="px-4 py-2 text-[14px] font-medium rounded-md bg-fg text-bg hover:opacity-85 disabled:opacity-50 transition-opacity"
+          >
+            {status === 'sending' ? 'Sending…' : status === 'sent' ? 'Sent' : 'Send message'}
+          </button>
+          <span className="text-[13px] text-muted">
+            {status === 'sent' && "Thanks — I'll be in touch shortly."}
+            {status === 'error' && (errorMsg || 'Something went wrong. Please email me directly.')}
+          </span>
+        </div>
+      </form>
+    </Section>
   );
 }

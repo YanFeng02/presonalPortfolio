@@ -1,7 +1,4 @@
-'use client';
-
-import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, Sparkles } from 'lucide-react';
+import Section from './Section';
 
 type TimelineItem = {
   kind: 'work' | 'edu';
@@ -16,37 +13,61 @@ type TimelineItem = {
 
 const timeline: TimelineItem[] = [
   {
+    kind: 'work',
+    title: 'Sales Representative (Casual)',
+    org: 'Antibot Robotic Mowers',
+    location: 'Sydney',
+    period: 'Oct 2026 — Present',
+    description:
+      'Ran live product demos at the Sydney Home Show and Costco roadshows, selling 7 robotic mowers face to face.',
+  },
+  {
+    kind: 'work',
+    title: 'Full-Stack Engineer Intern',
+    org: 'Marketing Simplified',
+    location: 'Remote',
+    period: 'Mar 2026 — Jun 2026',
+    description:
+      'Worked on mediaJira, an advertising operations platform (Django, Next.js, 18-service Docker setup), in a distributed team using Agile sprints, Jira and GitHub PR reviews.',
+    highlights: [
+      'Built a real-time support workspace with Django Channels — per-agent, per-conversation and new-ticket groups so events only reach the people who need them',
+      'Enforced tenant isolation across REST and WebSocket, with ownership checks, upload validation and pagination',
+      'Cut large CSV/XLSX import time from ~30s to under 2s with bulk inserts, fewer queries and parallel chunked uploads',
+      'Designed the customer data model and idempotent organisation setup on first project',
+      'Built queue and team management (T1–T4), invitations and a rich-text quick-reply library',
+      'Built the Zoom integration end to end: OAuth 2.0, encrypted token storage, 27 unit tests, Next.js scheduling pages',
+    ],
+  },
+  {
     kind: 'edu',
     title: 'Master of Computer Science',
     org: 'University of Wollongong',
     location: 'Australia',
-    period: 'Jul 2024 — Dec 2026 (expected)',
+    period: 'Jul 2024 — Dec 2026',
     description:
-      'Software Engineering, AI, Computer Networks. Relevant coursework: Full-Stack Web Development, AI & Cybersecurity, Cryptography, Information Security Management.',
+      'Full-Stack Web Development, AI and Cybersecurity, Computer Networks, Cryptography.',
     tag: 'Current',
   },
   {
     kind: 'work',
     title: 'Senior Product Manager',
     org: 'Hello TransTech (HelloRide)',
-    location: 'Shanghai, China',
+    location: 'Shanghai',
     period: 'May 2021 — Jul 2024',
-    description:
-      'Data platform PM delivering internal BI and LLM products at a shared-mobility platform with 500M+ registered users.',
+    description: 'Shared-mobility platform with 500M+ registered users.',
     highlights: [
-      'Scaled internal BI platform to 80%+ company-wide adoption',
-      'Shipped LLM-powered natural-language data query (Dify-based) — no SQL needed',
-      'Auto-provisioning system cut 20,000+ manual approvals/year by 90%',
-      'Partnered daily with engineers on API design, schemas, release planning',
+      'Owned the internal BI and data visualisation platform, used by 80%+ of staff across all business units',
+      'Shipped an LLM-based natural-language data query tool (metadata annotation + Dify knowledge base) so business users could get data without SQL',
+      'Designed rule-based access provisioning linked to the HR system, cutting 20,000+ manual approvals a year by 90%',
     ],
   },
   {
     kind: 'edu',
-    title: 'Master of Finance',
+    title: 'Master of Finance (Merit)',
     org: 'Queen Mary University of London',
     location: 'United Kingdom',
     period: 'Oct 2019 — Nov 2020',
-    description: 'Merit (GPA 3.7 / 4.0)',
+    description: '',
   },
   {
     kind: 'edu',
@@ -54,105 +75,37 @@ const timeline: TimelineItem[] = [
     org: 'Jiangxi Agricultural University',
     location: 'China',
     period: 'Sep 2015 — Jun 2019',
-    description:
-      'GPA 3.3 / 4.0. Published sole-author peer-reviewed paper in a CSSCI national core journal.',
+    description: '',
   },
 ];
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-24 md:py-40 bg-gradient-to-b from-transparent via-apple-surface/40 to-transparent">
-      <div className="max-w-6xl mx-auto px-6 md:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: '-100px' }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[11px] tracking-[0.25em] uppercase text-apple-blue mb-6"
-        >
-          — Path
-        </motion.div>
-
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: '-100px' }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-[32px] sm:text-[44px] md:text-[56px] lg:text-[64px] leading-[1.05] tracking-tightest font-semibold max-w-4xl"
-        >
-          <span className="gradient-text">Experience &amp; education.</span>{' '}
-          <span className="text-apple-text/50">From product to code, from finance to CS.</span>
-        </motion.h2>
-
-        <div className="mt-16 md:mt-20 relative">
-          {/* Vertical line */}
-          <div className="absolute left-4 md:left-8 top-2 bottom-2 w-px bg-gradient-to-b from-apple-blue/40 via-apple-border to-transparent" />
-
-          <div className="space-y-10 md:space-y-14">
-            {timeline.map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, margin: '-100px' }}
-                transition={{
-                  duration: 0.8,
-                  ease: [0.16, 1, 0.3, 1],
-                  delay: idx * 0.08,
-                }}
-                className="relative pl-14 md:pl-24"
-              >
-                {/* Dot */}
-                <div className="absolute left-4 md:left-8 top-3 -translate-x-1/2 w-3 h-3 rounded-full bg-apple-blue ring-4 ring-black">
-                  <div className="absolute inset-0 rounded-full bg-apple-blue animate-ping opacity-40" />
-                </div>
-
-                <div className="glass-light rounded-2xl p-6 md:p-8 hover:bg-white/[0.06] transition-all duration-500 group">
-                  <div className="flex flex-wrap items-center gap-2 text-[12px] text-apple-muted mb-3">
-                    <span className="inline-flex items-center gap-1.5 text-apple-blue">
-                      {item.kind === 'work' ? (
-                        <Briefcase size={12} strokeWidth={1.8} />
-                      ) : (
-                        <GraduationCap size={12} strokeWidth={1.8} />
-                      )}
-                      {item.kind === 'work' ? 'Work' : 'Education'}
-                    </span>
-                    <span className="w-1 h-1 rounded-full bg-apple-muted/40" />
-                    <span>{item.period}</span>
-                    <span className="w-1 h-1 rounded-full bg-apple-muted/40" />
-                    <span>{item.location}</span>
-                    {item.tag && (
-                      <span className="ml-auto inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-400/10 text-emerald-400 text-[10px] tracking-wider">
-                        <Sparkles size={10} /> {item.tag}
-                      </span>
-                    )}
-                  </div>
-
-                  <h3 className="font-display text-xl md:text-2xl font-semibold tracking-tight text-apple-text">
-                    {item.title}
-                  </h3>
-                  <div className="text-[14px] text-apple-text/70 mt-1">{item.org}</div>
-
-                  <p className="mt-4 text-[14px] text-apple-text/75 leading-relaxed">
-                    {item.description}
-                  </p>
-
-                  {item.highlights && (
-                    <ul className="mt-4 space-y-2">
-                      {item.highlights.map((h, i) => (
-                        <li key={i} className="flex gap-3 text-[13px] text-apple-text/70 leading-relaxed">
-                          <span className="text-apple-blue mt-0.5 flex-shrink-0">→</span>
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+    <Section id="experience" title="Experience & education">
+      <ol className="space-y-8">
+        {timeline.map((item) => (
+          <li key={item.title} className="grid sm:grid-cols-[140px_1fr] gap-x-4 gap-y-1">
+            <div className="text-[13px] text-muted pt-0.5">{item.period}</div>
+            <div>
+              <h3 className="font-medium">
+                {item.title}
+                {item.tag && <span className="ml-2 text-[12px] font-normal text-muted">· {item.tag}</span>}
+              </h3>
+              <div className="text-[14px] text-muted">
+                {item.org}, {item.location}
+              </div>
+              {item.description && <p className="mt-2 text-[14px] leading-relaxed">{item.description}</p>}
+              {item.highlights && (
+                <ul className="mt-2 space-y-1.5 text-[14px] text-muted list-disc pl-5 marker:text-line">
+                  {item.highlights.map((h) => (
+                    <li key={h} className="leading-relaxed">{h}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </Section>
   );
 }

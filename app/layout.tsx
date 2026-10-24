@@ -7,10 +7,10 @@ import Tracker from './components/Tracker';
 export const metadata: Metadata = {
   title: 'Feng Yan — Full-Stack Developer',
   description:
-    'Aspiring full-stack developer based in Sydney. Master of Computer Science at UOW. Building modern web products with React, Next.js, Django, and AI.',
+    'Full-stack developer in Sydney. Django, Next.js and AI agents. Master of Computer Science at UOW, ex-product manager.',
   openGraph: {
     title: 'Feng Yan — Full-Stack Developer',
-    description: 'Full-stack developer · Sydney · Ex-PM at 500M+ user platform',
+    description: 'Full-stack developer · Sydney · Django, Next.js, AI agents',
     type: 'website',
   },
   icons: {
@@ -25,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-black text-apple-text antialiased">
+      <body className="font-sans">
         {children}
         <Tracker />
         <Analytics />
